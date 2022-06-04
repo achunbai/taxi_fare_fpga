@@ -56,7 +56,7 @@ bcd_adder bcd_adder_a (
 .c_in		(c_in	),
           
 .sum		(a_o	),
-.c_out	(c_a	) 				
+.c_out		(c_a	) 				
 );
 
 bcd_adder bcd_adder_b (
@@ -65,7 +65,7 @@ bcd_adder bcd_adder_b (
 .c_in		(c_a	),
           
 .sum		(b_o	),
-.c_out	(c_b	) 				
+.c_out		(c_b	) 				
 );
 
 bcd_adder bcd_adder_c (
@@ -74,7 +74,7 @@ bcd_adder bcd_adder_c (
 .c_in		(c_b	),
           
 .sum		(c_o	),
-.c_out	(c_c	) 				
+.c_out		(c_c	) 				
 );
 
 bcd_adder bcd_adder_d (
@@ -83,7 +83,7 @@ bcd_adder bcd_adder_d (
 .c_in		(c_c	),
           
 .sum		(d_o	),
-.c_out	(c_out) 				
+.c_out		(c_out	) 				
 );
 
 endmodule
