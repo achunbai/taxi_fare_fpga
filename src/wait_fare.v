@@ -3,9 +3,9 @@
 //输入的wait_fare_pulse由wait_count模块产生
 /*
 wait_fare_pulse		-> wait_count模块产生的计费脉冲
-rst_n				-> 复位信号，下降沿有效
-wait_en				-> 启用信号，开关闭合即有效
-max					-> fare_total模块输出的计满信号
+rst_n			-> 复位信号，下降沿有效
+wait_en			-> 启用信号，开关闭合即有效
+max			-> fare_total模块输出的计满信号
 wait_fare_per_unit	-> 每十分钟的等待单价
 
 wait_fare_bcd		-> 以BCD码输出的时长费
@@ -47,12 +47,12 @@ end
 
 //调用bcd_adder_4模块实现单位时长费和总价的相加
 bcd_adder_4 wait_fare_adder (
-.a		(wait_fare						),
-.b		({4'b0000,wait_fare_per_unit}	),
-.c_in	(1'b0							),
+.a	(wait_fare			),
+.b	({4'b0000,wait_fare_per_unit}	),
+.c_in	(1'b0				),
 	
-.sum	(fare_next						),
-.c_out	(max_fare						)
+.sum	(fare_next			),
+.c_out	(max_fare			)
 );
 
 endmodule
