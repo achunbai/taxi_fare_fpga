@@ -1,3 +1,7 @@
+/*
+仿真思路：
+	输入BCD码自加一来测试输出是不是正确的
+*/
 `timescale 1ns/1ns
 
 module bcd_adder_4_tb();
@@ -18,7 +22,7 @@ always #10 a = 	((sum[3:0]==4'd9) & (sum[7:4]!=4'd9)) ? (sum + 5'b1_0001 - 5'b0_
 
 initial begin
 		a = 16'h0000;
-		b = 16'h0000;
+		b = 16'h0001;
 		c_in = 1'b0;
 		#(CYCLE * 100)
 	$stop;

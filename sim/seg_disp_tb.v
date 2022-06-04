@@ -1,3 +1,7 @@
+/*
+仿真思路：
+	测试他显示输出是不是对劲的
+*/
 `timescale 1ns/1ns
 
 module seg_disp_tb();

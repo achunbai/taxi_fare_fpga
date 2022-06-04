@@ -1,3 +1,7 @@
+/*
+仿真思路：
+	输入每脉冲的价格（BCD码），测试复位，启用，计满停止和价格计算功能是否正常
+*/
 `timescale 1ns/1ns
 module wait_fare_tb ();
 

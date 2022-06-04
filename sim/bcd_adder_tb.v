@@ -1,3 +1,7 @@
+/*
+仿真思路：
+	输入BCD码自加一来测试输出是不是正确的
+*/
 `timescale 1ns/1ns
 
 module bcd_adder_tb();

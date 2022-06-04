@@ -1,3 +1,7 @@
+/*
+仿真思路：
+	测试在特定情况瞎加法器的进位和计算功能是否正常
+*/
 `timescale 1ns/1ns
 
 module fare_total_tb();
