@@ -3,11 +3,11 @@
 //输入两个四位BCD码数字及前位进位
 //输出四位BCD码和以及本位进位
 /*
-a		-> 输入的加数a
-b		-> 输入的加数b
+a	-> 输入的加数a
+b	-> 输入的加数b
 c_in	-> 输入的前位进位
 
-sum		-> 输出的和
+sum	-> 输出的和
 c_out	-> 输出的本位进位
 */
 module bcd_adder_4 (
@@ -51,39 +51,39 @@ assign sum [15:12] = d_o;
 
 //送入四个bcd_adder相加
 bcd_adder bcd_adder_a (
-.a			(a_1	), 
-.b			(b_1	),
-.c_in		(c_in	),
+.a	(a_1	), 
+.b	(b_1	),
+.c_in	(c_in	),
           
-.sum		(a_o	),
+.sum	(a_o	),
 .c_out	(c_a	) 				
 );
 
 bcd_adder bcd_adder_b (
-.a			(a_2	), 
-.b			(b_2	),
-.c_in		(c_a	),
+.a	(a_2	), 
+.b	(b_2	),
+.c_in	(c_a	),
           
-.sum		(b_o	),
+.sum	(b_o	),
 .c_out	(c_b	) 				
 );
 
 bcd_adder bcd_adder_c (
-.a			(a_3	), 
-.b			(b_3	),
-.c_in		(c_b	),
+.a	(a_3	), 
+.b	(b_3	),
+.c_in	(c_b	),
           
-.sum		(c_o	),
+.sum	(c_o	),
 .c_out	(c_c	) 				
 );
 
 bcd_adder bcd_adder_d (
-.a			(a_4	), 
-.b			(b_4	),
-.c_in		(c_c	),
+.a	(a_4	), 
+.b	(b_4	),
+.c_in	(c_c	),
           
-.sum		(d_o	),
-.c_out	(c_out) 				
+.sum	(d_o	),
+.c_out	(c_out	) 				
 );
 
 endmodule
