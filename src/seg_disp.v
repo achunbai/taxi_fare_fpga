@@ -4,14 +4,14 @@
 /*
 fare_total_bcd	-> 输入的总价格信号，由fare_total模块产生
 distance_bcd	-> 输入的里程信号，由distance_fare模块产生
-max		-> 输入的计满信号，由fare_total模块产生
+max				-> 输入的计满信号，由fare_total模块产生
 
-fare_a		-> 输出的总价第1位
-fare_b		-> 输出的总价第2位
-fare_c		-> 输出的总价第3位
-fare_d		-> 输出的总价第4位
-distance_a	-> 输出的里程第1位
-distance_b	-> 输出的里程第2位
+fare_a			-> 输出的总价第1位
+fare_b			-> 输出的总价第2位
+fare_c			-> 输出的总价第3位
+fare_d			-> 输出的总价第4位
+distance_a		-> 输出的里程第1位
+distance_b		-> 输出的里程第2位
 */
 module seg_disp (
 	input wire [15:0] fare_total_bcd,
@@ -36,43 +36,43 @@ assign distance_b[0] = 1'b1;
 
 //调用了六个bcd_seg_disp模块进行译码
 bcd_seg_disp u_fare_a(
-.in	(fare_total_bcd[3:0]	),
-.max	(max			),
+.in		(fare_total_bcd[3:0]),
+.max	(max				),
 
 .out	(fare_a[7:1]		)
 );
 
 bcd_seg_disp u_fare_b(
-.in	(fare_total_bcd[7:4]	),
-.max	(max			),
+.in		(fare_total_bcd[7:4]),
+.max	(max				),
 
 .out	(fare_b[7:1]		)
 );
 
 bcd_seg_disp u_fare_c(
-.in	(fare_total_bcd[11:8]	),
-.max	(max			),
+.in		(fare_total_bcd[11:8]	),
+.max	(max					),
 
-.out	(fare_c[7:1]		)
+.out	(fare_c[7:1]			)
 );
 
 bcd_seg_disp u_fare_d(
-.in	(fare_total_bcd[15:12]	),
-.max	(max			),
+.in		(fare_total_bcd[15:12]	),
+.max	(max					),
 
-.out	(fare_d[7:1]		)
+.out	(fare_d[7:1]			)
 );
 
 bcd_seg_disp u_distance_a(
-.in	(distance_bcd[3:0]	),
-.max	(max			),
+.in		(distance_bcd[3:0]	),
+.max	(max				),
 
 .out	(distance_a[7:1]	)
 );
 
 bcd_seg_disp u_distance_b(
-.in	(distance_bcd[7:4]	),
-.max	(max			),
+.in		(distance_bcd[7:4]	),
+.max	(max				),
 
 .out	(distance_b[7:1]	)
 );
