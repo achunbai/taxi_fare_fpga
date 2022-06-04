@@ -2,16 +2,16 @@
 //输入里程单价
 //计算距离
 /*
-ten_meter_pulse			-> 输入的十米脉冲
-en						-> 输入的使能信号
-rst_n					-> 输入的复位信号
-wait_en					-> 输入的等待启用信号
+ten_meter_pulse		-> 输入的十米脉冲
+en			-> 输入的使能信号
+rst_n			-> 输入的复位信号
+wait_en			-> 输入的等待启用信号
 distance_fare_per_pulse	-> 以BCD码输入的每脉冲的价格
-s_fare					-> 输入的起步价
-max						-> 输入的计满信号，由fare_total产生
+s_fare			-> 输入的起步价
+max			-> 输入的计满信号，由fare_total产生
 
-distance_bcd			-> 以BCD码输出的距离
-distance_fare_bcd		-> 以BCD码输出的里程费用
+distance_bcd		-> 以BCD码输出的距离
+distance_fare_bcd	-> 以BCD码输出的里程费用
 */
 module distance_fare (
 	input wire ten_meter_pulse,
@@ -54,10 +54,10 @@ always@(posedge ten_meter_pulse or negedge rst_n) begin
 	end
 	else begin
 		//直接用BCD码计数，没用加法器
-		distance <= ((distance[3:0]==4'd9) & (distance[7:4]!=4'd9)) ? (distance + 8'h11-8'h0a) :
-					((distance[3:0]==4'd9) & (distance[7:4]==4'd9) & (distance[11:8]!=4'd9)) ? (distance + 12'h111-12'h0aa) :
-					((distance[3:0]==4'd9) & (distance[7:4]==4'd9) & (distance[11:8]==4'd9) & (distance[15:12]!=4'd9)) ? (distance + 16'h1111-16'h0aaa) :
-					distance + 1'd1;
+		distance   <= 	((distance[3:0]==4'd9) & (distance[7:4]!=4'd9)) ? (distance + 8'h11-8'h0a) :
+				((distance[3:0]==4'd9) & (distance[7:4]==4'd9) & (distance[11:8]!=4'd9)) ? (distance + 12'h111-12'h0aa) :
+				((distance[3:0]==4'd9) & (distance[7:4]==4'd9) & (distance[11:8]==4'd9) & (distance[15:12]!=4'd9)) ? (distance + 16'h1111-16'h0aaa) :
+				distance + 1'd1;
 	end
 end
 
@@ -85,12 +85,12 @@ always@(posedge ten_meter_pulse or negedge rst_n) begin
 end
 
 bcd_adder_4 distance_fare_adder (
-.a		(fare								),
-.b		({4'b0000,distance_fare_per_pulse}	),
-.c_in	(1'b0								),
+.a	(fare					),
+.b	({4'b0000,distance_fare_per_pulse}	),
+.c_in	(1'b0					),
 	
-.sum	(fare_next							),
-.c_out	(max_fare							)
+.sum	(fare_next				),
+.c_out	(max_fare				)
 );
 
 endmodule
