@@ -34,6 +34,7 @@ module taxi_fare (
 	output wire [7:0] distance_b
 );
 
+//设置两个参数MIN_COUNT和WAIT_COUNT，方便后续调整和仿真时覆写
 parameter MIN_COUNT = 32'd3_000_000_000;
 parameter WAIT_COUNT = 4'd10;
 wire min_pulse;

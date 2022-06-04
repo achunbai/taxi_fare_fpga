@@ -49,7 +49,8 @@ assign sum [ 7:4 ] = b_o;
 assign sum [11:8 ] = c_o;
 assign sum [15:12] = d_o;
 
-//送入四个bcd_adder相加
+//将拆分后的结果送入四个bcd_adder相加
+//计算最低和
 bcd_adder bcd_adder_a (
 .a			(a_1	), 
 .b			(b_1	),
@@ -59,6 +60,7 @@ bcd_adder bcd_adder_a (
 .c_out		(c_a	) 				
 );
 
+//计算第二位和
 bcd_adder bcd_adder_b (
 .a			(a_2	), 
 .b			(b_2	),
@@ -68,6 +70,7 @@ bcd_adder bcd_adder_b (
 .c_out		(c_b	) 				
 );
 
+//计算第三位和
 bcd_adder bcd_adder_c (
 .a			(a_3	), 
 .b			(b_3	),
@@ -77,6 +80,7 @@ bcd_adder bcd_adder_c (
 .c_out		(c_c	) 				
 );
 
+//计算最高位和
 bcd_adder bcd_adder_d (
 .a			(a_4	), 
 .b			(b_4	),

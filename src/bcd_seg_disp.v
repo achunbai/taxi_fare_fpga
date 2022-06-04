@@ -15,9 +15,11 @@ module bcd_seg_disp (
 );
 
 always@(*)begin
+	//如果计满信号为高电平，则直接输出9
 	if (max) begin
 		out <= 7'b0010000;
 	end
+	//输入0-9十种BCD码判断，并输出对应的七段数码管显示信号
 	else begin
 		case (in)
 			4'b0000:

@@ -21,10 +21,12 @@ module wait_fare (
 );
 
 reg [15:0] wait_fare = 16'b0;
+//费用是否挤满的标志位
 reg max_wait = 1'b0;
 wire [15:0] fare_next;
 wire max_fare;
 
+//防止出现不定态，先给寄存器赋初值，后赋给wire类型变量
 assign wait_fare_bcd = wait_fare;
 
 always@(posedge wait_fare_pulse or negedge rst_n) begin
@@ -32,7 +34,8 @@ always@(posedge wait_fare_pulse or negedge rst_n) begin
 		wait_fare <= 16'd0;
 		max_wait <= 1'b0;
 	end
-	//计满后停止计费
+	//判断是否满足暂停计费条件（wait_en为低电平，max和max_wait为高电平）
+	//满足则暂停计费
 	else if(!wait_en || max || max_wait) begin
 		wait_fare <= wait_fare;
 	end
@@ -40,6 +43,7 @@ always@(posedge wait_fare_pulse or negedge rst_n) begin
 	else if(max_fare) begin
 		max_wait <= 1'b1;
 	end
+	//若上述条件都不满足，则继续计费
 	else begin
 		wait_fare <= fare_next;
 	end

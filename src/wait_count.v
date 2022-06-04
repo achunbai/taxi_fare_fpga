@@ -14,21 +14,27 @@ module wait_count (
 	output wire wait_fare_pulse
 );
 
+//定义参数WAIT_COUNT，等待的时间，单位是分钟，方便后续修改及仿真时覆写
 parameter WAIT_COUNT = 4'd10;
 
 reg [3:0] counter;
 reg wait_fare = 1'd0;
+
+//防止出现不定态，先给寄存器赋初值，后赋给wire类型变量
 assign wait_fare_pulse = wait_fare;
 
 always@(posedge min_pulse or negedge rst_n) begin
+	//判断复位信号，为低电平则将计数器初始化为WAIT_COUNT的值，并输出低电平
 	if (!rst_n) begin
 		counter <= WAIT_COUNT;
 		wait_fare <= 1'd0;
 	end
+	//判断是否达到计费单位的分钟数，若达到则将输出脉冲翻转
 	else if (counter == 1'd1) begin
 		wait_fare <= ~wait_fare;
 		counter <= WAIT_COUNT;
 	end
+	//若上述条件都不满足，则开始计数
 	else begin
 		counter <= counter - 1'd1;
 	end

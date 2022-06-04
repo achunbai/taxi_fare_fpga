@@ -27,6 +27,8 @@ module seg_disp (
 );
 
 //调整价格显示格式为xx.xx 里程显示格式为xx
+//控制数码管上的小数点亮灭，开发板使用共阳极数码管
+//1灭0亮
 assign fare_a[0] = 1'b1;
 assign fare_b[0] = 1'b1;
 assign fare_c[0] = 1'b0;
@@ -35,6 +37,8 @@ assign distance_a[0] = 1'b1;
 assign distance_b[0] = 1'b1;
 
 //调用了六个bcd_seg_disp模块进行译码
+//按位拆分数据并译成七段译码器的信号
+//价格百分位显示
 bcd_seg_disp u_fare_a(
 .in		(fare_total_bcd[3:0]),
 .max	(max				),
@@ -42,6 +46,7 @@ bcd_seg_disp u_fare_a(
 .out	(fare_a[7:1]		)
 );
 
+//价格十分位显示
 bcd_seg_disp u_fare_b(
 .in		(fare_total_bcd[7:4]),
 .max	(max				),
@@ -49,6 +54,7 @@ bcd_seg_disp u_fare_b(
 .out	(fare_b[7:1]		)
 );
 
+//价格个位显示
 bcd_seg_disp u_fare_c(
 .in		(fare_total_bcd[11:8]	),
 .max	(max					),
@@ -56,6 +62,7 @@ bcd_seg_disp u_fare_c(
 .out	(fare_c[7:1]			)
 );
 
+//价格十位显示
 bcd_seg_disp u_fare_d(
 .in		(fare_total_bcd[15:12]	),
 .max	(max					),
@@ -63,6 +70,7 @@ bcd_seg_disp u_fare_d(
 .out	(fare_d[7:1]			)
 );
 
+//里程个位显示
 bcd_seg_disp u_distance_a(
 .in		(distance_bcd[3:0]	),
 .max	(max				),
@@ -70,6 +78,7 @@ bcd_seg_disp u_distance_a(
 .out	(distance_a[7:1]	)
 );
 
+//里程十位显示
 bcd_seg_disp u_distance_b(
 .in		(distance_bcd[7:4]	),
 .max	(max				),
