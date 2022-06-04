@@ -1,4 +1,7 @@
-
+/*
+仿真思路：
+	测试en，max，rst_n信号对分频模块的分频功能影响是否正常
+*/
 `timescale 1ns/1ns
 
 module freq_div_tb();
