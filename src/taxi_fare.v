@@ -1,20 +1,20 @@
 //顶层模块
 /*
-clk			-> 输入的时钟信号
-rst_n			-> 输入的复位信号，下降沿有效
-wait_en			-> 启用信号，开关闭合即有效
-en			-> 输入的使能信号
-ten_meter_pulse		-> 输入的十米脉冲
+clk						-> 输入的时钟信号
+rst_n					-> 输入的复位信号，下降沿有效
+wait_en					-> 启用信号，开关闭合即有效
+en						-> 输入的使能信号
+ten_meter_pulse			-> 输入的十米脉冲
 distance_fare_per_pulse	-> 以BCD码输入的每十米脉冲的价格
-s_fare			-> 输入的起步价
-wait_fare_per_unit	-> 每十分钟的等待单价
+s_fare					-> 输入的起步价
+wait_fare_per_unit		-> 每十分钟的等待单价
 
-fare_a			-> 输出的总价第1位
-fare_b			-> 输出的总价第2位
-fare_c			-> 输出的总价第3位
-fare_d			-> 输出的总价第4位
-distance_a		-> 输出的里程第1位
-distance_b		-> 输出的里程第2位
+fare_a					-> 输出的总价第1位
+fare_b					-> 输出的总价第2位
+fare_c					-> 输出的总价第3位
+fare_d					-> 输出的总价第4位
+distance_a				-> 输出的里程第1位
+distance_b				-> 输出的里程第2位
 */
 module taxi_fare (
 	input wire clk,
@@ -49,7 +49,7 @@ freq_div#(
 ) u_freq_div (
 .clk		(clk		),
 .rst_n		(rst_n		),
-.en		(en		),
+.en			(en			),
 .max		(max		),
              
 .min_pulse	(min_pulse	)
@@ -59,33 +59,33 @@ wait_count#(
 	.WAIT_COUNT(WAIT_COUNT)
 ) 
 u_wait_count (
-.min_pulse		(min_pulse	),
-.rst_n			(rst_n		),
+.min_pulse			(min_pulse		),
+.rst_n				(rst_n			),
                    
 .wait_fare_pulse	(wait_fare_pulse)
 );
 
 wait_fare u_wait_fare (
-.wait_fare_pulse	(wait_fare_pulse	),
-.rst_n			(rst_n			),
-.max			(max			),
-.wait_en		(wait_en		),
-.wait_fare_per_unit	(wait_fare_per_unit	),
+.wait_fare_pulse		(wait_fare_pulse	),
+.rst_n					(rst_n				),
+.max					(max				),
+.wait_en				(wait_en			),
+.wait_fare_per_unit		(wait_fare_per_unit ),
                       
-.wait_fare_bcd		(wait_fare_bcd		)
+.wait_fare_bcd			(wait_fare_bcd		)
 );
 
 distance_fare u_distance_fare (
-.ten_meter_pulse		(ten_meter_pulse	),
-.en				(en			),
-.max				(max			),
-.rst_n				(rst_n			),
-.wait_en			(wait_en		),
+.ten_meter_pulse			(ten_meter_pulse		),
+.en							(en						),
+.max						(max					),
+.rst_n						(rst_n					),
+.wait_en					(wait_en				),
 .distance_fare_per_pulse	(distance_fare_per_pulse),
-.s_fare				(s_fare			),
+.s_fare						(s_fare					),
                          
-.distance_bcd			(distance_bcd		),
-.distance_fare_bcd		(distance_fare_bcd	)
+.distance_bcd				(distance_bcd			),
+.distance_fare_bcd			(distance_fare_bcd		)
 );
 
 fare_total u_fare_total (
@@ -93,20 +93,20 @@ fare_total u_fare_total (
 .wait_fare_bcd		(wait_fare_bcd		),
                    
 .fare_total_bcd		(fare_total_bcd		),
-.max			(max			)
+.max				(max				)
 );
 
 seg_disp u_seg_disp (
 .fare_total_bcd	(fare_total_bcd	),
 .distance_bcd	(distance_bcd	),
-.max		(max		),
+.max			(max			),
                 
-.fare_a		(fare_a		),
-.fare_b		(fare_b		),
-.fare_c		(fare_c		),
-.fare_d		(fare_d		),
-.distance_a	(distance_a	),
-.distance_b	(distance_b	)
+.fare_a			(fare_a			),
+.fare_b			(fare_b			),
+.fare_c			(fare_c			),
+.fare_d			(fare_d			),
+.distance_a		(distance_a		),
+.distance_b		(distance_b		)
 );
 
 endmodule
