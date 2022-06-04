@@ -6,7 +6,7 @@ distance_fare_bcd	-> 输入的里程费，由wait_fare模块产生
 wait_fare_bcd		-> 输入的时长费，由distance_fare模块产生
 
 fare_total_bcd		-> 输出的总价格
-max					-> 输出的计满信号
+max			-> 输出的计满信号
 */
 module fare_total (
 	input wire [15:0] distance_fare_bcd,
@@ -48,39 +48,39 @@ assign fare_total_bcd [15:12] = d_o;
 
 //调用bcd_adder模块相加
 bcd_adder bcd_adder_a (
-.a			(a_1	), 
-.b			(b_1	),
-.c_in		(1'b0	),
+.a	(a_1	), 
+.b	(b_1	),
+.c_in	(1'b0	),
           
-.sum		(a_o	),
-.c_out		(c_a	) 				
+.sum	(a_o	),
+.c_out	(c_a	) 				
 );
 
 bcd_adder bcd_adder_b (
-.a			(a_2	), 
-.b			(b_2	),
-.c_in		(c_a	),
+.a	(a_2	), 
+.b	(b_2	),
+.c_in	(c_a	),
           
-.sum		(b_o	),
-.c_out		(c_b	) 				
+.sum	(b_o	),
+.c_out	(c_b	) 				
 );
 
 bcd_adder bcd_adder_c (
-.a			(a_3	), 
-.b			(b_3	),
-.c_in		(c_b	),
+.a	(a_3	), 
+.b	(b_3	),
+.c_in	(c_b	),
           
-.sum		(c_o	),
-.c_out		(c_c	) 				
+.sum	(c_o	),
+.c_out	(c_c	) 				
 );
 
 bcd_adder bcd_adder_d (
-.a			(a_4	), 
-.b			(b_4	),
-.c_in		(c_c	),
-          
-.sum		(d_o	),
-.c_out		(max	) 				
+.a	(a_4	), 
+.b	(b_4	),
+.c_in	(c_c	),
+         
+.sum	(d_o	),
+.c_out	(max	) 				
 );
 
 endmodule
