@@ -42,8 +42,7 @@ always@(posedge ten_meter_pulse or negedge rst_n) begin
 		distance <= 16'd0;
 		max_distance <= 1'b0;
 	end
-	//费用计满后里程继续计费，直到计满
-	else if(!en || wait_en) begin
+	else if(!en || max || wait_en) begin
 		distance <= distance;
 	end
 	else if (distance > 16'h9999) begin
