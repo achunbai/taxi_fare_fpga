@@ -15,7 +15,9 @@ module wait_count (
 );
 
 //定义参数WAIT_COUNT，等待的时间，单位是分钟，方便后续修改及仿真时覆写
-parameter WAIT_COUNT = 4'd10;
+//每十分钟含有10个时钟周期，但是这里只检测了上跳沿
+//所以是每五个周期（五分钟）翻转一次输出脉冲信号
+parameter WAIT_COUNT = 4'd5;
 
 reg [3:0] counter;
 reg wait_fare = 1'd0;

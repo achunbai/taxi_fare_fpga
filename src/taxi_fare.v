@@ -35,8 +35,12 @@ module taxi_fare (
 );
 
 //设置两个参数MIN_COUNT和WAIT_COUNT，方便后续调整和仿真时覆写
-parameter MIN_COUNT = 32'd3_000_000_000;
-parameter WAIT_COUNT = 4'd10;
+//每分钟包含3_000_000_000个时钟周期，但是这里只检测了上跳沿
+//所以是每1_500_000_000个周期（半分钟）翻转一次输出脉冲信号
+parameter MIN_COUNT = 32'd1_500_000_000;
+//每十分钟含有10个时钟周期，但是这里只检测了上跳沿
+//所以是每五个周期（五分钟）翻转一次输出脉冲信号
+parameter WAIT_COUNT = 4'd5;
 wire min_pulse;
 wire max;
 wire wait_fare_pulse;

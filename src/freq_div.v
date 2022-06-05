@@ -18,7 +18,9 @@ module freq_div (
 );
 
 //定义参数MIN_COUNT，方便仿真模块覆写及后续改动
-parameter MIN_COUNT = 32'd3_000_000_000;
+//每分钟包含3_000_000_000个时钟周期，但是这里只检测了上跳沿
+//所以是每1_500_000_000个周期（半分钟）翻转一次输出脉冲信号
+parameter MIN_COUNT = 32'd1_500_000_000;
 
 reg [31:0] min_counter = MIN_COUNT;
 reg min = 1'd0;
