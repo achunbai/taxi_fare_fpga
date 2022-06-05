@@ -21,7 +21,7 @@ module wait_fare (
 );
 
 reg [15:0] wait_fare = 16'b0;
-//费用是否挤满的标志位
+//费用是否计满的标志位
 reg max_wait = 1'b0;
 wire [15:0] fare_next;
 wire max_fare;

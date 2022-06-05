@@ -19,7 +19,7 @@ module wait_count (
 //所以是每五个周期（五分钟）翻转一次输出脉冲信号
 parameter WAIT_COUNT = 4'd5;
 
-reg [3:0] counter;
+reg [3:0] counter = WAIT_COUNT;
 reg wait_fare = 1'd0;
 
 //防止出现不定态，先给寄存器赋初值，后赋给wire类型变量

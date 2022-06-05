@@ -9,10 +9,11 @@ module distance_fare_tb();
 
 reg ten_meter_pulse;
 reg en;
+reg rst_n;
 reg [11:0] distance_fare_per_pulse;
 reg [11:0] s_fare;
 	
-wire [15:0] distance_bcd;
+wire [7:0] distance_bcd;
 wire [15:0] distance_fare_bcd;
 
 parameter CYCLE = 5'd20;
@@ -25,14 +26,13 @@ initial begin
 		ten_meter_pulse = 1'b0;
 		distance_fare_per_pulse = 12'b0000_0000_0011;
 		s_fare = 12'b0011_0000_0000;
-		pulses_per_km = 12'b0001_0000_0000;
 	#(CYCLE);
 		rst_n = 1'b1;
 	#(CYCLE * 50);
 		en = 1'b1;
-	#(CYCLE * 1200);
+	#(CYCLE * 110000);
 		rst_n = 1'b0;
-	#(CYCLE * 10);
+	#(CYCLE * 100);
 		$stop;
 end
 

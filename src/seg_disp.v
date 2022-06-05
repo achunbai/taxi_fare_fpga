@@ -73,7 +73,7 @@ bcd_seg_disp u_fare_d(
 //里程个位显示
 bcd_seg_disp u_distance_a(
 .in		(distance_bcd[3:0]	),
-.max	(max				),
+.max	(1'd0				),
 
 .out	(distance_a[7:1]	)
 );
@@ -81,7 +81,7 @@ bcd_seg_disp u_distance_a(
 //里程十位显示
 bcd_seg_disp u_distance_b(
 .in		(distance_bcd[7:4]	),
-.max	(max				),
+.max	(1'd0				),
 
 .out	(distance_b[7:1]	)
 );
