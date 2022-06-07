@@ -13,9 +13,8 @@ reg rst_n;
 
 wire min_pulse;
 
-
+parameter MIN_COUNT = 4'd10;
 parameter CYCLE = 5'd20;
-parameter MAX_NUM = 7'd100;
 
 always # 10 clk = ~clk;
 
@@ -39,7 +38,9 @@ initial begin
 	 $stop;
 end
 
-freq_div freq_div_test (
+freq_div#(
+	.MIN_COUNT(MIN_COUNT)
+) freq_div_test (
 .clk		(clk		),
 .rst_n		(rst_n		),
 .en			(en			),
